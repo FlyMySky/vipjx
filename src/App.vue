@@ -26,8 +26,10 @@ export default {
       this.$axios.get('/api/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN')
           .then(response => {
             // handle success
-            this.url = this.baseUrl + response.data.images[0].url
-            console.log(this.url);
+            if (response.status === 200) {
+              this.url = this.baseUrl + response.data.images[0].url
+              console.log(this.url);
+            }
           })
           .catch(error => {
             // handle error
